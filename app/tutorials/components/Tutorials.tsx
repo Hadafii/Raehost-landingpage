@@ -669,7 +669,7 @@ export default function TutorialsPage(): JSX.Element {
               alt="Tutorial Background"
               className="object-cover"
               quality={85}
-              src="/assets/landing/landing2.png"
+              src="/assets/landing/stock/landing2.png"
             />
             <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />
           </div>

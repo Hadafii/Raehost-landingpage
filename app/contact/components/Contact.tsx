@@ -218,7 +218,7 @@ export default function ContactPage(): JSX.Element {
             alt="Contact Background"
             className="object-cover"
             quality={85}
-            src="/assets/landing/landingfaq.png"
+            src="/assets/landing/stock/landingfaq.png"
           />
           <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />
         </div>

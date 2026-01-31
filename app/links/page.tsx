@@ -73,7 +73,7 @@ const page = () => {
             priority
             alt="Hero Banner"
             className="object-cover blur-[6px]"
-            src="/assets/landing/airender5enh.png"
+            src="/assets/landing/santorini/airender5enh.png"
             style={{ objectPosition: "center 25%" }}
           />
         </div>

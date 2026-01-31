@@ -174,7 +174,7 @@ export default function MinecraftHostingPage(): JSX.Element {
               alt="Minecraft Hosting Background"
               className="object-cover"
               quality={85}
-              src="/assets/landing/Banner.png"
+              src="/assets/landing/stock/Banner.png"
             />
             <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />
           </div>

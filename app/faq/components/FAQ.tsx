@@ -315,7 +315,7 @@ export default function FAQPage(): JSX.Element {
               alt="FAQ Background"
               className="object-cover"
               quality={85}
-              src="/assets/landing/landing.png" // atau path gambar yang sesuai
+              src="/assets/landing/stock/landing.png" // atau path gambar yang sesuai
             />
             {/* Blur Effect */}
             <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />

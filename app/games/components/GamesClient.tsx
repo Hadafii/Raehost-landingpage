@@ -76,7 +76,7 @@ export default function GamesClient() {
             alt="Games Background"
             className="object-cover"
             quality={85}
-            src="/assets/landing/Banner6.png"
+            src="/assets/landing/stock/Banner6.png"
           />
           {/* Blur Effect */}
           <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />

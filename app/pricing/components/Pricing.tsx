@@ -145,7 +145,7 @@ const CATEGORY_CONFIG: Record<
 
 // Enhanced color mapping for different categories (matching ProductCard)
 const getCategoryColor = (
-  slug: string
+  slug: string,
 ): "primary" | "secondary" | "success" | "warning" | "danger" => {
   switch (slug.toLowerCase()) {
     case "premium":
@@ -305,11 +305,11 @@ export default function PricingPage(): JSX.Element {
             // Check if this category has private products
             const categoryProducts = data.categories[categorySlug];
             const hasPrivateProducts = categoryProducts.some(
-              (product: Product) => product.category_is_private
+              (product: Product) => product.category_is_private,
             );
 
             return !hasPrivateProducts;
-          }
+          },
         );
 
         // Get available categories and set default selected category
@@ -360,7 +360,7 @@ export default function PricingPage(): JSX.Element {
 
   const calculateDiscountedPrice = (
     price: number,
-    annual: boolean = false
+    annual: boolean = false,
   ): number => {
     if (annual) {
       return Math.round(price * 12 * 0.85); // 15% discount for annual
@@ -497,7 +497,7 @@ export default function PricingPage(): JSX.Element {
               alt="Pricing Background"
               className="object-cover"
               quality={85}
-              src="/assets/landing/landingover.png"
+              src="/assets/landing/stock/landingover.png"
             />
             <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />
           </div>
@@ -687,7 +687,7 @@ export default function PricingPage(): JSX.Element {
                           size: 32,
                           className:
                             getCategoryClasses(selectedCategory).iconColor,
-                        }
+                        },
                       )}
                       <h2 className="text-2xl font-bold">
                         {pricingData.stats.categories[selectedCategory].name}{" "}
@@ -708,7 +708,7 @@ export default function PricingPage(): JSX.Element {
                           >
                             {feature}
                           </Chip>
-                        )
+                        ),
                       )}
                     </div>
                   </CardBody>
@@ -749,7 +749,7 @@ export default function PricingPage(): JSX.Element {
                             const products = pricingData.categories[cat] || [];
 
                             return products.some((p) => !p.category_is_private);
-                          }
+                          },
                         );
 
                         if (firstPublicCategory) {
@@ -767,28 +767,28 @@ export default function PricingPage(): JSX.Element {
                 <AnimatePresence mode="wait">
                   {visibleProducts.map((product, index) => {
                     const categoryColor = getCategoryColor(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const gradientClass = getCategoryGradient(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const borderClass = getCategoryBorder(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const iconColor = getCategoryIconColor(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const bgOpacity = getCategoryBgOpacity(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const borderOpacity = getCategoryBorderOpacity(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const borderLight = getCategoryBorderLight(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const buttonGradient = getCategoryButtonGradient(
-                      product.category_slug
+                      product.category_slug,
                     );
                     const isAvailable = true; // Assuming all products are available
 
@@ -902,8 +902,8 @@ export default function PricingPage(): JSX.Element {
                                         {formatPrice(
                                           calculateDiscountedPrice(
                                             product.original_price,
-                                            isAnnual
-                                          )
+                                            isAnnual,
+                                          ),
                                         )}
                                       </div>
                                       {/* Current Promo Price */}
@@ -914,8 +914,8 @@ export default function PricingPage(): JSX.Element {
                                         {formatPrice(
                                           calculateDiscountedPrice(
                                             product.price,
-                                            isAnnual
-                                          )
+                                            isAnnual,
+                                          ),
                                         )}
                                         <span className="text-lg font-normal text-default-600">
                                           /{isAnnual ? "tahun" : "bulan"}
@@ -941,8 +941,8 @@ export default function PricingPage(): JSX.Element {
                                       {formatPrice(
                                         calculateDiscountedPrice(
                                           product.price,
-                                          isAnnual
-                                        )
+                                          isAnnual,
+                                        ),
                                       )}
                                       <span className="text-lg font-normal text-default-600">
                                         /{isAnnual ? "tahun" : "bulan"}

@@ -280,6 +280,37 @@ export default function TermsOfServicePage() {
             },
           ],
         },
+        {
+          number: "4",
+          title: "Akses Backup Setelah Masa Kedaluwarsa",
+          items: [
+            {
+              number: "4.1",
+              content:
+                "Setelah layanan memasuki masa kedaluwarsa (expired), server akan berada dalam status suspend. Dalam kondisi ini, pengguna tidak memiliki akses ke data server, termasuk namun tidak terbatas pada: file server, database, dan backup.",
+            },
+            {
+              number: "4.2",
+              content:
+                "Meskipun masih terdapat masa tenggang 3 (tiga) hari kalender, masa tenggang tersebut hanya diberikan untuk keperluan perpanjangan layanan, bukan untuk pengambilan data atau backup server.",
+            },
+            {
+              number: "4.3",
+              content:
+                "Pengambilan backup atau data server saat masa kedaluwarsa hanya dapat dilakukan melalui permintaan khusus kepada tim RaeHost dan dikenakan biaya tambahan, sesuai dengan tingkat kesulitan dan durasi pengerjaan.",
+            },
+            {
+              number: "4.4",
+              content:
+                "RaeHost berhak menolak permintaan pengambilan backup apabila data telah terhapus, sistem tidak memungkinkan, atau telah melewati masa penghapusan permanen.",
+            },
+            {
+              number: "4.5",
+              content:
+                "RaeHost telah menyediakan fitur backup terjadwal (scheduled backup) melalui panel manajemen. Namun demikian, pengguna tetap bertanggung jawab untuk memastikan backup berjalan dengan baik, tersimpan dengan benar, dan melakukan backup tambahan secara mandiri apabila diperlukan sebelum masa aktif layanan berakhir.",
+            },
+          ],
+        },
       ],
     },
     {
@@ -638,7 +669,7 @@ export default function TermsOfServicePage() {
               alt="TOS-Background"
               className="object-cover"
               quality={85}
-              src="/assets/landing/landinglunar.png"
+              src="/assets/landing/stock/landinglunar.png"
             />
             {/* Blur Effect */}
             <div className="absolute inset-0 backdrop-blur-sm bg-black/20 dark:bg-black/60" />
@@ -838,7 +869,7 @@ export default function TermsOfServicePage() {
                                   dangerouslySetInnerHTML={{
                                     __html: item.content.replace(
                                       /\*\*(.*?)\*\*/g,
-                                      '<strong class="text-primary">$1</strong>'
+                                      '<strong class="text-primary">$1</strong>',
                                     ),
                                   }}
                                   className="leading-relaxed text-default-700"
