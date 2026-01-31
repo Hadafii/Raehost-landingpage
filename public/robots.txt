@@ -1,0 +1,92 @@
+# Robots.txt untuk Raehost - Game Server Hosting Indonesia
+# https://raehost.com/robots.txt
+
+# Aturan untuk semua search engine
+User-agent: *
+
+# Halaman yang DIIZINKAN untuk di-crawl (public pages)
+Allow: /
+Allow: /about
+Allow: /pricing
+Allow: /games
+Allow: /minecraft-hosting
+Allow: /tutorials
+Allow: /faq
+Allow: /contact
+Allow: /terms-of-service
+Allow: /privacy-policy
+
+# Halaman yang TIDAK DIIZINKAN untuk di-crawl (private/sensitive)
+Disallow: /dashboard
+Disallow: /development
+Disallow: /admin
+Disallow: /superadmin
+Disallow: /cs
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /logout
+Disallow: /reset-password
+Disallow: /forgot-password
+Disallow: /verify
+Disallow: /profile
+Disallow: /server
+Disallow: /tickets
+Disallow: /checkout
+Disallow: /new-order
+Disallow: /history
+Disallow: /test-notifications
+Disallow: /unauthorized
+Disallow: /check-auth
+
+# File dan folder sistem yang tidak boleh di-crawl
+Disallow: /_next/
+Disallow: /uploads/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /tmp/
+Disallow: /.well-known/
+
+# Khusus untuk Google Bot - lebih permisif
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /superadmin
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+Disallow: /server
+Disallow: /tickets
+Disallow: /checkout
+
+# Khusus untuk Bing Bot
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /superadmin
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl delay untuk menghindari overload server
+Crawl-delay: 1
+
+# Sitemap location (akan di-generate otomatis)
+Sitemap: https://raehost.com/sitemap.xml
