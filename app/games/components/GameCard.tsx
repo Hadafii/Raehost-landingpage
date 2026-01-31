@@ -22,7 +22,7 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link passHref href={"/new-order"}>
+    <Link passHref href={"https://clients.raehost.com/new-order"}>
       <div
         className="relative overflow-hidden rounded-xl shadow-lg group cursor-pointer h-[300px] md:h-[500px] flex flex-col transform transition-all duration-300 hover:scale-105"
         onMouseEnter={() => setIsHovered(true)}

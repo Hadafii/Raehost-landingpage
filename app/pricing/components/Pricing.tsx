@@ -1079,7 +1079,7 @@ export default function PricingPage(): JSX.Element {
                                   endContent={
                                     <IconArrowRight className="w-4 h-4" />
                                   }
-                                  href="/new-order"
+                                  href="https://clients.raehost.com/new-order"
                                   size="lg"
                                   variant="shadow"
                                 >
@@ -1276,7 +1276,7 @@ export default function PricingPage(): JSX.Element {
                         as={Link}
                         className="text-white"
                         color="primary"
-                        href="/new-order"
+                        href="https://clients.raehost.com/new-order"
                         size="lg"
                         startContent={<IconRocket size={20} />}
                         variant="shadow"
