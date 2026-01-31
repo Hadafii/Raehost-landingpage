@@ -9,4 +9,10 @@
 @theme {
     --font-sans: "font", sans-serif;
     --font-mono: "monospace", monospace;
+    --font-figtree: var(--font-figtree), "Figtree", sans-serif;
+}
+
+/* Custom font utility classes */
+.font-figtree {
+    font-family: var(--font-figtree);
 }

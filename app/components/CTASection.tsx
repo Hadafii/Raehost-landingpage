@@ -13,7 +13,7 @@ const CTASection = () => {
           fill
           alt="CTA Background"
           className="object-cover object-center"
-          src="/assets/landing/winter-theme-minecraft-2.webp"
+          src="/assets/landing/valentine/Valentine-drone.png"
         />
       </div>
 

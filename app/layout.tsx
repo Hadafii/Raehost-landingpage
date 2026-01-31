@@ -1,11 +1,12 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-
 import { Providers } from "./providers";
 
 import { fontFigtree } from "@/config/fonts";
-
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { SnowfallBackground } from "@/components/ui/Snowflakes";
 // SEO Configuration yang comprehensive
 const seoConfig = {
   siteName: "Raehost",
@@ -224,6 +225,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Rule: untuk halaman home ("/") gunakan isTransparent={false}, selainnya true
   return (
     <html suppressHydrationWarning lang="id">
       <head>
@@ -268,11 +270,26 @@ export default function RootLayout({
       <body
         className={clsx(
           "bg-background font-figtree antialiased transition-colors",
-          fontFigtree.variable
+          fontFigtree.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          {children}
+          <SnowfallBackground
+            count={150}
+            speed={0.1}
+            minSize={1}
+            maxSize={40}
+            minOpacity={0}
+            maxOpacity={1}
+            color={"#ffffff"}
+            wind={true}
+            zIndex={999}
+          />
+          <div className="flex flex-col min-h-dvh ">
+            <Navbar isTransparent />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

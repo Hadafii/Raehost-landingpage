@@ -43,7 +43,7 @@ import { motion } from "framer-motion";
 import { Settings } from "lucide-react";
 import Image from "next/image";
 
-import Footer from "../../../components/Footer";
+import Footer from "../../components/Footer";
 
 import AnimatedContent from "@/components/AnimatedContent";
 import BlurText from "@/components/ui/BlurText";

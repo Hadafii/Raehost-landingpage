@@ -177,7 +177,12 @@ export default function AppNavbar({ isTransparent = false }: AppNavbarProps) {
                 <DiscordIcon className="text-default-500" />
               </Link>
             </div>
-            <Button as={Link} color="primary" href="/login" variant="flat">
+            <Button
+              as={Link}
+              color="primary"
+              href="https://clients.raehost.com"
+              variant="flat"
+            >
               Dashboard
             </Button>
           </NavbarItem>

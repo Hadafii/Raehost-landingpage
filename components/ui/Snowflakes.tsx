@@ -63,9 +63,7 @@ const Snowflake = ({
         animation: `snowfall-${id} ${animationDuration}s linear infinite`,
         filter: "drop-shadow(0 0 1px rgba(255,255,255,0.8))",
       }}
-    >
-      <SnowflakeIcon size={size} color={color} />
-    </div>
+    ></div>
   );
 };
 
