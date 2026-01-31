@@ -25,7 +25,9 @@ const cpuSingleThreadData = [
     score: 3446,
     category: "comparison",
     description: "Previous Gen Gaming CPU",
-    color: "#6b7280",
+    provider: "Provider A",
+    providerColor: "#ef4444", // Red
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -34,7 +36,9 @@ const cpuSingleThreadData = [
     score: 3560,
     category: "comparison",
     description: "Entry Level Server",
-    color: "#f59e0b",
+    provider: "Provider H",
+    providerColor: "#a855f7", // Purple
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -43,7 +47,9 @@ const cpuSingleThreadData = [
     score: 3783,
     category: "comparison",
     description: "High-End Mobile CPU",
-    color: "#06b6d4",
+    provider: "Provider Z",
+    providerColor: "#06b6d4", // Mint/Cyan
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -52,7 +58,9 @@ const cpuSingleThreadData = [
     score: 4657,
     category: "premium",
     description: "Latest Zen 5 Architecture",
-    color: "#3b82f6",
+    provider: "RAEHOST",
+    providerColor: "#3b82f6", // Blue
+    barColor: "#3b82f6", // Blue for bar (highlight)
     isOurs: true,
   },
   {
@@ -61,7 +69,9 @@ const cpuSingleThreadData = [
     score: 4735,
     category: "premium",
     description: "Premium Gaming CPU",
-    color: "#8b5cf6",
+    provider: "RAEHOST",
+    providerColor: "#8b5cf6", // Purple
+    barColor: "#8b5cf6", // Purple for bar (highlight)
     isOurs: true,
   },
 ];
@@ -74,7 +84,9 @@ const cpuMarkData = [
     score: 27443,
     category: "comparison",
     description: "High-End Mobile CPU",
-    color: "#06b6d4",
+    provider: "Provider Z",
+    providerColor: "#06b6d4", // Mint/Cyan
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -83,7 +95,9 @@ const cpuMarkData = [
     score: 27716,
     category: "comparison",
     description: "Previous Gen Gaming CPU",
-    color: "#6b7280",
+    provider: "Provider A",
+    providerColor: "#ef4444", // Red
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -92,7 +106,9 @@ const cpuMarkData = [
     score: 33690,
     category: "comparison",
     description: "Entry Level Server",
-    color: "#f59e0b",
+    provider: "Provider H",
+    providerColor: "#a855f7", // Purple
+    barColor: "#9ca3af", // Gray for bar
     isOurs: false,
   },
   {
@@ -101,7 +117,9 @@ const cpuMarkData = [
     score: 37172,
     category: "premium",
     description: "Latest Zen 5 Architecture",
-    color: "#3b82f6",
+    provider: "RAEHOST",
+    providerColor: "#3b82f6", // Blue
+    barColor: "#3b82f6", // Blue for bar (highlight)
     isOurs: true,
   },
   {
@@ -110,7 +128,9 @@ const cpuMarkData = [
     score: 65949,
     category: "premium",
     description: "Premium Gaming CPU",
-    color: "#8b5cf6",
+    provider: "RAEHOST",
+    providerColor: "#8b5cf6", // Purple
+    barColor: "#8b5cf6", // Purple for bar (highlight)
     isOurs: true,
   },
 ];
@@ -120,23 +140,85 @@ const formatScore = (score: number): string => {
   return new Intl.NumberFormat("en-US").format(score);
 };
 
-// Custom Tooltip Component
+// Custom Tooltip Component - Enhanced Version with Dark Mode Support
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
 
     return (
-      <div className="bg-white dark:bg-slate-800 p-3 rounded-lg shadow-lg border border-default-200">
-        <p className="font-semibold text-sm">{data.shortName}</p>
-        <p className="text-xs text-default-600 mb-2">{data.description}</p>
-        <p className="text-sm font-bold" style={{ color: data.color }}>
-          Score: {formatScore(data.score)}
-        </p>
-        {data.isOurs && (
-          <Chip className="mt-1" color="primary" size="sm" variant="flat">
-            Our Server
-          </Chip>
-        )}
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl border-2 border-default-200 dark:border-slate-600 overflow-hidden min-w-[220px]">
+        {/* Header with Provider Color */}
+        <div
+          className="px-4 py-2.5 border-b border-default-200 dark:border-slate-600"
+          style={{
+            background: data.isOurs
+              ? `linear-gradient(135deg, ${data.barColor}20, ${data.barColor}08)`
+              : "transparent",
+          }}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <div
+                className="w-3 h-3 rounded-full ring-2 ring-white dark:ring-slate-800"
+                style={{ backgroundColor: data.barColor }}
+              />
+              <p
+                className="font-bold text-sm"
+                style={{ color: data.providerColor }}
+              >
+                {data.provider}
+              </p>
+            </div>
+            {data.isOurs && (
+              <Chip className="h-5" color="primary" size="sm" variant="solid">
+                Ours
+              </Chip>
+            )}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="px-4 py-3 space-y-2.5">
+          {/* CPU Name */}
+          <div>
+            <p className="text-xs text-default-500 dark:text-slate-400 mb-0.5">
+              Processor
+            </p>
+            <p className="font-semibold text-sm text-default-900 dark:text-slate-100">
+              {data.shortName}
+            </p>
+          </div>
+
+          {/* Description */}
+          <div>
+            <p className="text-xs text-default-500 dark:text-slate-400 mb-0.5">
+              Category
+            </p>
+            <p className="text-xs text-default-700 dark:text-slate-300">
+              {data.description}
+            </p>
+          </div>
+
+          {/* Score - Highlighted */}
+          <div className="pt-2 border-t border-default-200 dark:border-slate-600">
+            <div className="flex items-baseline justify-between">
+              <p className="text-xs font-medium text-default-600 dark:text-slate-400">
+                Performance Score
+              </p>
+              <div className="flex items-baseline gap-1">
+                <p
+                  className="text-lg font-bold tabular-nums"
+                  style={{ color: data.barColor }}
+                >
+                  {formatScore(data.score)}
+                </p>
+                <p className="text-xs text-default-500 dark:text-slate-400">
+                  pts
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -235,6 +317,7 @@ export default function ServerSpecs() {
                 </div>
 
                 {/* Chart */}
+                {/* Chart */}
                 <div className={isMobile ? "h-64" : "h-80"}>
                   <ResponsiveContainer height="100%" width="100%">
                     <BarChart
@@ -247,6 +330,63 @@ export default function ServerSpecs() {
                         bottom: isMobile ? 5 : 10,
                       }}
                     >
+                      <defs>
+                        {/* Gradient for Ryzen 7 9700X */}
+                        <linearGradient
+                          id="gradient-blue-1"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.9}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.6}
+                          />
+                        </linearGradient>
+                        {/* Gradient for Ryzen 9 9950X */}
+                        <linearGradient
+                          id="gradient-purple-1"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#8b5cf6"
+                            stopOpacity={0.9}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#8b5cf6"
+                            stopOpacity={0.6}
+                          />
+                        </linearGradient>
+                        {/* Shadow/Glow for our servers */}
+                        <filter
+                          id="glow-1"
+                          x="-50%"
+                          y="-50%"
+                          width="200%"
+                          height="200%"
+                        >
+                          <feGaussianBlur
+                            stdDeviation="2"
+                            result="coloredBlur"
+                          />
+                          <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
                       <CartesianGrid
                         className="opacity-30"
                         stroke="currentColor"
@@ -272,13 +412,27 @@ export default function ServerSpecs() {
                         }
                         tickLine={false}
                       />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Bar dataKey="score" radius={[3, 3, 0, 0]}>
+                      <Tooltip
+                        content={<CustomTooltip />}
+                        cursor={{ fill: "transparent" }}
+                      />
+                      <Bar dataKey="score" radius={[8, 8, 0, 0]}>
                         {cpuSingleThreadData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={
+                              entry.isOurs
+                                ? entry.barColor === "#3b82f6"
+                                  ? "url(#gradient-blue-1)"
+                                  : "url(#gradient-purple-1)"
+                                : entry.barColor
+                            }
+                            filter={entry.isOurs ? "url(#glow-1)" : undefined}
+                            opacity={entry.isOurs ? 1 : 0.7}
+                          />
                         ))}
                         <LabelList
-                          className="text-xs font-medium fill-current"
+                          className="text-xs font-semibold fill-current"
                           dataKey="score"
                           formatter={(value: any) => formatScore(Number(value))}
                           position="top"
@@ -289,20 +443,28 @@ export default function ServerSpecs() {
                 </div>
 
                 {/* Compact Legend */}
-                <div className="mt-4 pt-4 border-t border-default-200">
-                  <div className="flex flex-wrap justify-center gap-3">
+                <div className="mt-4 pt-4 border-t border-default-200 dark:border-slate-700">
+                  <div className="flex flex-wrap justify-center gap-4">
                     {cpuSingleThreadData.map((cpu) => (
                       <div
                         key={cpu.shortName}
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-2"
                       >
                         <div
-                          className="w-2 h-2 rounded"
-                          style={{ backgroundColor: cpu.color }}
+                          className="w-2.5 h-2.5 rounded-sm"
+                          style={{ backgroundColor: cpu.barColor }}
                         />
-                        <span className="text-xs text-default-600">
-                          {cpu.shortName}
-                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs text-default-700 dark:text-slate-300">
+                            {cpu.shortName}
+                          </span>
+                          <span
+                            className="text-[10px] font-bold"
+                            style={{ color: cpu.providerColor }}
+                          >
+                            {cpu.provider}
+                          </span>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -358,6 +520,63 @@ export default function ServerSpecs() {
                         bottom: isMobile ? 5 : 10,
                       }}
                     >
+                      <defs>
+                        {/* Gradient for Ryzen 7 9700X */}
+                        <linearGradient
+                          id="gradient-blue-2"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.9}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.6}
+                          />
+                        </linearGradient>
+                        {/* Gradient for Ryzen 9 9950X */}
+                        <linearGradient
+                          id="gradient-purple-2"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#8b5cf6"
+                            stopOpacity={0.9}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#8b5cf6"
+                            stopOpacity={0.6}
+                          />
+                        </linearGradient>
+                        {/* Shadow/Glow for our servers */}
+                        <filter
+                          id="glow-2"
+                          x="-50%"
+                          y="-50%"
+                          width="200%"
+                          height="200%"
+                        >
+                          <feGaussianBlur
+                            stdDeviation="2"
+                            result="coloredBlur"
+                          />
+                          <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
                       <CartesianGrid
                         className="opacity-30"
                         stroke="currentColor"
@@ -383,13 +602,27 @@ export default function ServerSpecs() {
                         }
                         tickLine={false}
                       />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Bar dataKey="score" radius={[3, 3, 0, 0]}>
+                      <Tooltip
+                        content={<CustomTooltip />}
+                        cursor={{ fill: "transparent" }}
+                      />
+                      <Bar dataKey="score" radius={[8, 8, 0, 0]}>
                         {cpuMarkData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={
+                              entry.isOurs
+                                ? entry.barColor === "#3b82f6"
+                                  ? "url(#gradient-blue-2)"
+                                  : "url(#gradient-purple-2)"
+                                : entry.barColor
+                            }
+                            filter={entry.isOurs ? "url(#glow-2)" : undefined}
+                            opacity={entry.isOurs ? 1 : 0.7}
+                          />
                         ))}
                         <LabelList
-                          className="text-xs font-medium fill-current"
+                          className="text-xs font-semibold fill-current"
                           dataKey="score"
                           formatter={(value: any) => formatScore(Number(value))}
                           position="top"
@@ -400,20 +633,28 @@ export default function ServerSpecs() {
                 </div>
 
                 {/* Compact Legend */}
-                <div className="mt-4 pt-4 border-t border-default-200">
-                  <div className="flex flex-wrap justify-center gap-3">
+                <div className="mt-4 pt-4 border-t border-default-200 dark:border-slate-700">
+                  <div className="flex flex-wrap justify-center gap-4">
                     {cpuMarkData.map((cpu) => (
                       <div
                         key={cpu.shortName}
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-2"
                       >
                         <div
-                          className="w-2 h-2 rounded"
-                          style={{ backgroundColor: cpu.color }}
+                          className="w-2.5 h-2.5 rounded-sm"
+                          style={{ backgroundColor: cpu.barColor }}
                         />
-                        <span className="text-xs text-default-600">
-                          {cpu.shortName}
-                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs text-default-700 dark:text-slate-300">
+                            {cpu.shortName}
+                          </span>
+                          <span
+                            className="text-[10px] font-bold"
+                            style={{ color: cpu.providerColor }}
+                          >
+                            {cpu.provider}
+                          </span>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -440,7 +681,7 @@ export default function ServerSpecs() {
                     size="sm"
                     variant="flat"
                   >
-                    Our Server
+                    RAEHOST
                   </Chip>
                 </div>
               </div>
@@ -473,7 +714,7 @@ export default function ServerSpecs() {
                     size="sm"
                     variant="flat"
                   >
-                    Our Server
+                    RAEHOST
                   </Chip>
                 </div>
               </div>

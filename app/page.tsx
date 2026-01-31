@@ -20,12 +20,12 @@ import { DiscordIcon } from "@/components/icons";
 export default function Home() {
   return (
     <>
-      <section className="relative w-full h-dvh">
+      <section className="relative w-full h-screen">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 opacity-100 dark:opacity-0 transition-opacity duration-700">
             <Image
               fill
-              priority
+              preload
               alt="Hero Banner"
               className="object-cover "
               src="/assets/landing/valentine/Valentine2.png"
@@ -35,7 +35,7 @@ export default function Home() {
           <div className="absolute inset-0 opacity-0 dark:opacity-100 transition-opacity duration-700">
             <Image
               fill
-              priority
+              preload
               alt="Hero Banner"
               className="object-cover "
               src="/assets/landing/valentine/Valentine2-night.png"
@@ -45,14 +45,6 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-black/10 dark:bg-black/40  z-10" />
         <div className="relative z-20 flex flex-col justify-center items-center text-center h-full backdrop-blur-[3px] px-4 text-white">
-          {/* <div className="flex justify-center items-center mb-4">
-              <Image
-                alt="Raehost Logo"
-                src="/assets/Raehost_logo.svg"
-                width={30}
-                height={30}
-              />
-            </div> */}
           <div className="mb-4  ">
             <AnimatedContent
               reverse
@@ -146,7 +138,7 @@ export default function Home() {
                       focus-visible:ring-2 focus-visible:ring-[#006FEE]
                       focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950`}
                   color="primary"
-                  href="/register"
+                  href="https://clients.raehost.com/register"
                   radius="full"
                   size="lg"
                   startContent={<IconRocket size={20} />}
@@ -191,11 +183,20 @@ export default function Home() {
         </div>
       </section>
       <div className="relative">
-        <div
+        {/* <div
           className="absolute inset-0 opacity-30"
           style={{
             backgroundImage: `radial-gradient(circle at 25% 25%, rgba(100, 100, 100, 1) 1.2px, transparent 1px), radial-gradient(circle at 75% 75%,rgba(100, 100, 100, 1) 1.2px, transparent 1px)`,
             backgroundSize: "50px 50px",
+            maskImage: `radial-gradient(ellipse 95% 95% at center, black 40%, transparent 70%)`,
+          }}
+        /> */}
+        <div
+          className="absolute inset-0 opacity-15 dark:opacity-20 transition-colors"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg transform='translate(28, 28) scale(0.7)' stroke='rgb(100, 100, 100)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg transform='translate(28, 28) scale(0.7)' stroke='rgb(100, 100, 100)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: "80px 80px",
+            backgroundPosition: "0 0, 40px 40px",
             maskImage: `radial-gradient(ellipse 95% 95% at center, black 40%, transparent 70%)`,
           }}
         />

@@ -224,7 +224,7 @@ export default function AppNavbar({ isTransparent = false }: AppNavbarProps) {
                 as={Link}
                 className="w-full"
                 color="primary"
-                href="/login"
+                href="https://clients.raehost.com/login"
                 size="lg"
               >
                 Dashboard

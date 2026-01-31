@@ -114,7 +114,7 @@ const formatPrice = (price: string): string => {
 
 const calculateSavings = (
   originalPrice: string,
-  currentPrice: string
+  currentPrice: string,
 ): string => {
   const original = parseInt(originalPrice);
   const current = parseInt(currentPrice);
@@ -247,10 +247,11 @@ const SectionHeader = () => (
     </div>
 
     {/* Discount Banner */}
-    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-200/50 dark:border-cyan-500/30 rounded-full px-4 py-2">
-      <IconDiscount2 className="text-cyan-500" size={20} />
-      <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
-        ❄️ Winter Sale - Diskon Spesial Akhir Tahun
+    {/* Valentine Discount Banner */}
+    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500/10 to-red-500/10 border border-pink-200/50 dark:border-pink-500/30 rounded-full px-4 py-2">
+      <IconDiscount2 className="text-pink-500" size={20} />
+      <span className="text-sm font-medium text-pink-600 dark:text-pink-400">
+        💝 Valentine Sale - Diskon Spesial untuk Kamu
       </span>
     </div>
   </div>

@@ -27,6 +27,10 @@ const MIGRATED_PATHS = [
   "/account",
   "/profile",
   "/balance",
+  "/login",
+  "/register",
+  "/reset-password",
+  "/verify-email",
 ];
 
 export default function NotFound() {

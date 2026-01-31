@@ -138,7 +138,12 @@ export default function AppNavbar({
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="/login" variant="flat">
+          <Button
+            as={Link}
+            color="primary"
+            href="https://clients.raehost.com/login"
+            variant="flat"
+          >
             Dashboard
           </Button>
         </NavbarItem>

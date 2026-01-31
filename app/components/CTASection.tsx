@@ -47,7 +47,7 @@ const CTASection = () => {
                 <Button
                   as="a"
                   color="primary"
-                  href="/login"
+                  href="https://clients.raehost.com/login"
                   size="lg"
                   variant="shadow"
                 >
